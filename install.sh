@@ -1,5 +1,5 @@
 #!/bin/sh
 
 for f in confs/*; do
-    cp -r "$f" "~/.${f#*/}"
+    cp -r "$f" "$HOME/.${f#*/}"
 done
