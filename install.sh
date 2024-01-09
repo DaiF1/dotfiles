@@ -1,5 +1,9 @@
 #!/bin/sh
 
-for f in confs/*; do
-    cp -r "$f" "$HOME/.${f#*/}"
+for c in confs/*; do
+    cp -r "$c" "$HOME/.${c#*/}"
+done
+
+for f in fonts/*; do
+    cp "$f" /usr/share/fonts/
 done
