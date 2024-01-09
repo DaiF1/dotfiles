@@ -1,0 +1,10 @@
+eval $(opam env)
+
+export EDITOR=nvim
+export PATH="/home/daif/.config/tools:$PATH"
+
+alias cat=bat
+alias vim=nvim
+alias ls="ls --color=auto"
+
+PS1='\[\e[97m\]\H\[\e[94m\]@\[\e[96;1m\]\u \[\e[0;91m\][$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)] \[\e[35;3m\]\W\n\[\e[0;92m\]\$ \[\e[0m\]'
