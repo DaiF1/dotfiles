@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "preload = $1" > /tmp/hyprpaper.conf
+echo "wallpaper = eDP-1,$1" >> /tmp/hyprpaper.conf
+echo "wallpaper = HDMI-A-1,$1" >> /tmp/hyprpaper.conf
+echo "splash = false" >> /tmp/hyprpaper.conf
+
+wal -i $1
+
+~/.config/alacritty-color-export/script.sh
+
+hyprpaper -c /tmp/hyprpaper.conf
