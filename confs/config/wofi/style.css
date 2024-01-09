@@ -1,0 +1,97 @@
+window {
+    font-family: 'RetroMario';
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 2px #25706A solid;
+    padding: 2px;
+    background-color: rgba(7, 53, 64, 0.8);
+    color: #FBB435;
+}
+
+#outer-box {
+    padding: 20px;
+}
+
+#input {
+    background-color: rgba(0, 0, 0, 0);
+    color: #FBB435;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    font-size: 1.3em;
+}
+
+#input:focus {
+    border: 1px #FBB435 solid;
+    box-shadow: none;
+}
+
+#scroll {
+    margin: 0;
+    border: none;
+}
+
+#inner-box {
+    background-color: rgba(0, 0, 0, 0);
+    color: #FBB435;
+}
+
+#inner-box > *:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#entry {
+    background-color: rgba(0, 0, 0, 0);
+    color: #FBB435;
+    border-radius: 5px;
+    padding: 4px 10px;
+    margin: 1px;
+}
+
+#entry:selected {
+    background-color: #25706A;
+    font-size: 1.2em;
+    transition: font-size 0.125s;
+    outline: none;
+}
+
+#entry:active {
+    box-shadow: none;
+}
+
+list {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#entry > list > #entry:selected {
+    background-color: rgba(7, 53, 64, 0.8);
+}
+
+#entry:selected > list > #entry:selected {
+    background-color: rgba(7, 53, 64, 0.8);
+}
+
+list > #entry:selected > #text {
+    color: white;
+}
+
+#img {
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+#text {
+    padding-top: 2px;
+    animation: fadeIn 0.3s ease-in-out both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

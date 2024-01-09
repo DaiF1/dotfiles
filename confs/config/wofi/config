@@ -1,0 +1,11 @@
+show = drun
+
+allow_images = true
+image_size = 24
+
+hide_scroll = true
+
+width = 38%
+
+key_up = k
+key_down = j
