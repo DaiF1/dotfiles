@@ -1,0 +1,58 @@
+(defpoll BATPERC :interval "1m" `scripts/battery.sh`)
+
+(defwidget datetime []
+    (box :orientation "h"
+         time))
+
+(defwidget powerbutton []
+    (box :orientation "h"
+        :class "powerbutton"
+        :active true
+        (label :text BATPERC)))
+
+(defpoll time :interval "1s"
+    "date '+%H:%M'")
+
+(deflisten workspace0 "scripts/workspaces.sh")
+
+(defwidget workspaces0 []
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+    (box :class "workspace-box"
+      (for i in workspace0
+        (button
+          :onclick "swaymsg workspace ${i.id}"
+          :class {i.focused ? "workspace-button workspace-active" : "workspace-button" }
+          "${i.name}")))))
+
+(defwindow workspaces
+           :monitor 0
+           :exclusive false
+           :geometry (geometry :x "15px"
+                               :y "-33px"
+                               :width "3%"
+                               :height "33px"
+                               :anchor "top left")
+           :reserve (struts :distance "10px" :side "top")
+           (workspaces0))
+
+(defwindow bar
+           :monitor 0
+           :exclusive true
+           :geometry (geometry :x "0%"
+                               :y "15px"
+                               :width "5%"
+                               :height "33px"
+                               :anchor "top center")
+           :reserve (struts :distance "10px" :side "top")
+           (datetime))
+
+(defwindow power
+           :monitor 0
+           :exclusive false
+           :geometry (geometry :x "15px"
+                               :y "-33px"
+                               :width "4%"
+                               :height "33px"
+                               :anchor "top right")
+           :reserve (struts :distance "10px" :side "top")
+           (powerbutton))

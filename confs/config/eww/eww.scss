@@ -1,0 +1,65 @@
+window
+{
+    background-color: rgba(7, 33, 64, 0.5);
+    border: 2px solid #F0E2B8;
+    border-radius: 13px;
+    color: #F0E2B8;
+
+    font-family: "RetroMario";
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.workspaces
+{
+    background-color: transparent;
+}
+
+.workspace-box
+{
+    background-color: rgba(7, 33, 64, 0.5);
+    border: 2px solid #F0E2B8;
+    border-radius: 13px;
+}
+
+.workspace-box > *:first-child
+{
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.workspace-box > *:last-child
+{
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.workspace-button
+{
+    background-color: transparent;
+    background-image: none;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    color: #F0E2B8;
+    padding: 1px 13px;
+}
+
+.workspace-active
+{
+    background: #F0E2B8;
+    animation: 0.1s popin ease-in;
+    color: black;
+}
+
+@keyframes popin {
+    from {
+        background: linear-gradient(rgba(0, 0, 0, 0.25) 100%, white);
+        color: white;
+    }
+
+    to {
+        background: linear-gradient(rgba(0, 0, 0, 0.25), white 100%);
+        color: black;
+    }
+}
