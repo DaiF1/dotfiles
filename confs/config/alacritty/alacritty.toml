@@ -1,0 +1,55 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.4
+
+[font.bold]
+family = "Space Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Space Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Space Mono"
+style = "Italic"
+
+[font.normal]
+family = "Space Mono"
+style = "Regular"
+
+[window]
+opacity = 0.9
+
+# BEGIN ACE
+[colors.primary]
+background = '#0B1B1D'
+foreground = '#eeda9b'
+
+[colors.cursor]
+text =      '#0B1B1D'
+cursor =    '#eeda9b'
+
+[colors.normal]
+black =     '#0B1B1D'
+red =     '#933825'
+green =      '#0C8856'
+yellow =      '#F89630'
+blue =       '#224B58'
+magenta =   '#C6604A'
+cyan =    '#287C6A'
+white =     '#eeda9b'
+
+[colors.bright]
+black =     '#475046'
+red =     '#933825'
+green =      '#1D9662'
+yellow =      '#FDB639'
+blue =       '#345259'
+magenta =   '#C6604A'
+cyan =    '#339475'
+white =     '#eeda9b'
+# END ACE
+
