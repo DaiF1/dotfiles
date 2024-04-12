@@ -169,6 +169,16 @@ input type:keyboard {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # Adjust volume
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    # Adjust brightness
+    bindsym XF86MonBrightnessUp exec brightnessctl s +1%
+    bindsym XF86MonBrightnessDown exec brightnessctl s 1%-
 #
 # Scratchpad:
 #
