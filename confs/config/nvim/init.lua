@@ -1,0 +1,5 @@
+require("main_options")
+require("plugins")
+require("colors")
+require("status_bar")
+require("keymaps")
