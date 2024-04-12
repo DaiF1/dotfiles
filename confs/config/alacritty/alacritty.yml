@@ -1,0 +1,53 @@
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 0.8
+
+font:
+  normal: 
+    family: Space Mono
+    style: Regular
+
+  bold: 
+    family: Space Mono
+    style: Bold
+
+  italic: 
+    family: Space Mono
+    style: Italic
+
+  bold_italic: 
+    family: Space Mono
+    style: Bold Italic
+
+  size: 11
+
+
+# BEGIN ACE
+colors:
+  primary:
+    background: '#0D0908'
+    foreground: '#ddd1c8'
+  cursor:
+    text:       '#0D0908'
+    cursor:     '#ddd1c8'
+  normal:
+    black:      '#0D0908'
+    red:        '#64565C'
+    green:      '#707F64'
+    yellow:     '#B4521E'
+    blue:       '#906F60'
+    magenta:    '#DDA34B'
+    cyan:       '#424D9A'
+    white:      '#ddd1c8'
+  bright:
+    black:      '#9a928c'
+    red:        '#64565C'
+    green:      '#707F64'
+    yellow:     '#B4521E'
+    blue:       '#906F60'
+    magenta:    '#DDA34B'
+    cyan:       '#424D9A'
+    white:      '#ddd1c8'
+# END ACE
