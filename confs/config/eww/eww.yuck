@@ -1,58 +1,71 @@
 (defpoll BATPERC :interval "1m" `scripts/battery.sh`)
+(defpoll WEATHER :interval "1m" `scripts/weather.sh`)
 
-(defwidget datetime []
-    (box :orientation "h"
-         time))
+; found at https://github.com/owenrumney/eww-bar/blob/master/revealer.yuck
+(defwidget revealer-on-hover [var varname ?class ?duration ?transition]
+  (box :class "${class} revealer-on-hover"
+       :orientation "h"
+       :space-evenly false
+    (eventbox :class "eventbox"
+              :onhover "eww update ${varname}=true"
+              :onhoverlost "eww update ${varname}=false"
+      (box :space-evenly false
+        (children :nth 0)
+        (revealer :reveal var
+                  :transition {transition ?: "slideright"}
+                  :duration {duration ?: "500ms"}
+          (children :nth 1))
+        (box :class "${class}" (children :nth 2))))))
+
+(defwidget topbar []
+  (centerbox :orientation "h" :class "bar"
+    (box :orientation "h" :space-evenly false (datetime))
+    (box :orientation "h" :space-evenly false (workspaces))
+    (box :orientation "h" :space-evenly false :halign "end" (status))
+  )
+)
+
+(defwidget status []
+    (box :class "status status-bar"
+        :orientation "h"
+         (powerbutton)
+    )
+)
 
 (defwidget powerbutton []
     (box :orientation "h"
         :class "powerbutton"
-        :active true
         (label :text BATPERC)))
 
 (defpoll time :interval "1s"
-    "date '+%H:%M'")
+    "date '+%a %d %b %H:%M'")
 
-(deflisten workspace0 "scripts/workspaces.sh")
+(defwidget datetime []
+    (box 
+        :space-evenly false
+        (box (label :class "datetime status-bar" :text time))
+        (box (label :class "weather status-bar" :text WEATHER))
+    )
+)
 
-(defwidget workspaces0 []
+(deflisten workspace "scripts/workspaces.sh")
+
+(defwidget workspaces []
   (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
-    (box :class "workspace-box"
-      (for i in workspace0
+    (box :class "workspace-box status-bar"
+      (for i in workspace
         (button
-          :onclick "swaymsg workspace ${i.id}"
+          :onclick "swaymsg workspace ${i.name}"
           :class {i.focused ? "workspace-button workspace-active" : "workspace-button" }
           "${i.name}")))))
-
-(defwindow workspaces
-           :monitor 0
-           :exclusive false
-           :geometry (geometry :x "15px"
-                               :y "-33px"
-                               :width "3%"
-                               :height "33px"
-                               :anchor "top left")
-           :reserve (struts :distance "10px" :side "top")
-           (workspaces0))
 
 (defwindow bar
            :monitor 0
            :exclusive true
            :geometry (geometry :x "0%"
-                               :y "15px"
-                               :width "5%"
-                               :height "33px"
+                               :y "0px"
+                               :width "100%"
+                               :height "22px"
                                :anchor "top center")
-           :reserve (struts :distance "10px" :side "top")
-           (datetime))
-
-(defwindow power
-           :monitor 0
-           :exclusive false
-           :geometry (geometry :x "15px"
-                               :y "-33px"
-                               :width "4%"
-                               :height "33px"
-                               :anchor "top right")
-           :reserve (struts :distance "10px" :side "top")
-           (powerbutton))
+           :reserve (struts :distance "0px" :side "top")
+           (topbar))
