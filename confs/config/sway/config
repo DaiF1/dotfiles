@@ -223,16 +223,18 @@ bindsym $mod+r mode "resize"
 #
 # Window aspect
 #
-default_border pixel 2
+default_border none
 default_floating_border none
 
-gaps inner 8
-gaps outer 5
+gaps inner 4
+gaps outer 2
+
+smart_gaps on
 
 client.focused f0e2b8ff f0e2b8ff 072140ff f0e2b8ff
 client.unfocused f0e2b8ff 0721407f f0e2b8ff f0e2b8ff
 
-corner_radius 10
+# SwayFX
 
 shadows enable
 
@@ -241,7 +243,7 @@ blur enable
 layer_effects "wofi" blur enable; shadow enable
 layer_effects "gtk-layer-shell" blur enable
 
-default_dim_inactive 0.1
+default_dim_inactive 0.2
 
 #
 # Status Bar:
