@@ -247,6 +247,7 @@ default_dim_inactive 0.1
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-exec eww open bar && eww open power && eww open workspaces
+
+exec eww open bar
 
 include @sysconfdir@/sway/config.d/*
