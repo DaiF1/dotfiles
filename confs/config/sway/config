@@ -170,6 +170,9 @@ input type:keyboard {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
+    # Take screenshot to clipboard
+    bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy
+
     # Adjust volume
     bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
     bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
