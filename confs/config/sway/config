@@ -37,10 +37,21 @@ output * bg /home/daif/Pictures/wallpapers/night/origamistudio_origamiking.jpeg 
 #
 # Example configuration:
 #
- exec swayidle -w \
+
+exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -c 000000'
+
+### Notification configuration
+
+exec swaync
+
+### Startup apps
+
+exec cbatticon
+exec_always gammastep -t 6500:3000
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -172,6 +183,7 @@ input type:keyboard {
 
     # Take screenshot to clipboard
     bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy
+    bindsym $mod+Shift+G exec $HOME/.config/tools/gif_capture
 
     # Adjust volume
     bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
@@ -234,6 +246,8 @@ smart_gaps on
 client.focused f0e2b8ff f0e2b8ff 072140ff f0e2b8ff
 client.unfocused f0e2b8ff 0721407f f0e2b8ff f0e2b8ff
 
+for_window [class="floating*"] floating enable
+
 # SwayFX
 
 shadows enable
@@ -244,6 +258,10 @@ layer_effects "wofi" blur enable; shadow enable
 layer_effects "gtk-layer-shell" blur enable
 
 default_dim_inactive 0.2
+
+titlebar_separator disable
+
+for_window [floating] corner_radius 6
 
 #
 # Status Bar:

@@ -1,9 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-OUTPUT="/home/daif/Videos/GIF-$(date '+%F-%H').gif"
+# Modified version of a script found here:
+# https://www.reddit.com/r/swaywm/comments/vr78q2/an_elegant_approach_to_using_wlrecorder_and_slurp/
 
-wf-recorder -g "$(slurp)" -f ~/Videos/recording.mkv
+# If an instance of wf-recorder is running under this user kill it with SIGINT and exit
+pkill --euid "$USER" --signal SIGINT wf-recorder && exit
 
-ffmpeg -i ~/Videos/recording.mkv -vf "fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "${OUTPUT}"
+# Define paths
+OutputPath="$HOME/Videos/GIF-$(date '+%F-%H').gif"
+TmpPathPrefix='/tmp/gif-record'
+TmpRecordPath=$TmpPathPrefix'-cap.mp4'
+TmpPalettePath=$TmpPathPrefix'-palette.png'
 
-rm ~/Videos/recording.mkv
+# Trap for cleanup on exit
+OnExit() {
+	[[ -f $TmpRecordPath ]] && rm -f "$TmpRecordPath"
+	[[ -f $TmpPalettePath ]] && rm -f "$TmpPalettePath"
+}
+trap OnExit EXIT
+
+# Set umask so tmp files are only acessible to the user
+umask 177
+
+# Get selection and honor escape key
+Coords=$(slurp) || exit
+
+notify-send "Gif Capture" "Starting capture."
+
+# Capture video using slup for screen area
+# timeout and exit after 10 minutes as user has almost certainly forgotten it's running
+timeout 600 wf-recorder -g "$Coords" -f "$TmpRecordPath" || exit
+
+# Produce a pallete from the video file
+ffmpeg -i "$TmpRecordPath" -filter_complex "palettegen=stats_mode=full" "$TmpPalettePath" -y || exit
+
+# Return umask to default
+umask 022
+
+# Use pallete to produce a gif from the video file
+ffmpeg -i "$TmpRecordPath" -i "$TmpPalettePath" -filter_complex "paletteuse=dither=sierra2_4a" "$OutputPath" -y -loop 0 -vf "fps=10,scale=640:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" || exit
+
+notify-send "Gif Capture" "Capture ended."
