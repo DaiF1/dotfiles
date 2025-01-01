@@ -188,6 +188,9 @@ input type:touchpad {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
+#
+# Shortcuts:
+#
     # Take screenshot to clipboard
     bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy
     bindsym $mod+Shift+G exec $HOME/.config/tools/gif_capture
@@ -201,6 +204,10 @@ input type:touchpad {
     # Adjust brightness
     bindsym XF86MonBrightnessUp exec brightnessctl s +1%
     bindsym XF86MonBrightnessDown exec brightnessctl s 1%-
+
+    # Pin window
+    bindsym $mod+p sticky toggle
+
 #
 # Scratchpad:
 #
