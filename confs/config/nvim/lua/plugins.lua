@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     'ayu-theme/ayu-vim',
+    'ribru17/bamboo.nvim',
     'nvim-lualine/lualine.nvim',
     {
         'neoclide/coc.nvim',

@@ -25,7 +25,7 @@ set $lock swaylock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/daif/Pictures/wallpapers/night/origamistudio_origamiking.jpeg fill
+output * bg /home/daif/Pictures/wallpapers/day/sleeping-tiger.jpg fill
 #
 # Example configuration:
 #
@@ -243,8 +243,8 @@ gaps outer 2
 
 smart_gaps on
 
-client.focused f0e2b8ff f0e2b8ff 072140ff f0e2b8ff
-client.unfocused f0e2b8ff 0721407f f0e2b8ff f0e2b8ff
+client.focused f0e2b8ff f0e2b8ff 222222 f0e2b8ff
+client.unfocused 2222227f 2222227f f0e2b8ff f0e2b8ff
 
 for_window [class="floating*"] floating enable
 
