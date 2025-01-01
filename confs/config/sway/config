@@ -285,3 +285,6 @@ for_window [floating] corner_radius 6
 exec eww open bar
 
 include @sysconfdir@/sway/config.d/*
+
+# Fix weird tab display on firefox
+for_window [app_id="firefox"] blur disable
