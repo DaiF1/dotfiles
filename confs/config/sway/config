@@ -77,6 +77,13 @@ input type:keyboard {
     xkb_options caps:swapescape
 }
 
+input type:touchpad {
+    tap enabled
+    tap_button_map lrm
+    dwt enabled
+    dwtp enabled
+}
+
 ### Key bindings
 #
 # Basics:
