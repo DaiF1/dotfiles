@@ -26,6 +26,19 @@ window
     border-top: none;
 }
 
+.notifications
+{
+    border: none;
+    border-radius: 0;
+
+    background-color: #F0E2B8;
+    background-image: none;
+    color: rgb(34, 34, 34);
+
+    padding: 0 8px;
+    min-height: 0;
+}
+
 .workspaces
 {
     background-color: transparent;

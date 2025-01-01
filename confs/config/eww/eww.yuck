@@ -1,6 +1,9 @@
 (defpoll BATPERC :interval "1m" `scripts/battery.sh`)
 (defpoll WEATHER :interval "1m" `scripts/weather.sh`)
 
+(deflisten workspace "scripts/workspaces.sh")
+(deflisten dnd "swaync-client -s")
+
 ; found at https://github.com/owenrumney/eww-bar/blob/master/revealer.yuck
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
   (box :class "${class} revealer-on-hover"
@@ -26,15 +29,24 @@
 )
 
 (defwidget status []
-    (box :class "status status-bar"
+    (box :class "status"
         :orientation "h"
+        :space-evenly false
+         (notifications)
          (powerbutton)
+    )
+)
+
+(defwidget notifications []
+    (button :class "notifications status-bar"
+        :onclick "swaync-client -t -sw"
+        (label :text { jq(dnd, '.dnd') == 'false' ? "" :"" })
     )
 )
 
 (defwidget powerbutton []
     (box :orientation "h"
-        :class "powerbutton"
+        :class "powerbutton status-bar"
         (label :text BATPERC)))
 
 (defpoll time :interval "1s"
@@ -44,11 +56,9 @@
     (box 
         :space-evenly false
         (box (label :class "datetime status-bar" :text time))
-        (box (label :class "weather status-bar" :text WEATHER))
+        (box (label :class "weather status-bar" :text { WEATHER ?: "-100 C" }))
     )
 )
-
-(deflisten workspace "scripts/workspaces.sh")
 
 (defwidget workspaces []
   (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
