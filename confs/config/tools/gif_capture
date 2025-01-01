@@ -40,4 +40,6 @@ ffmpeg -i "$TmpRecordPath" -filter_complex "palettegen=stats_mode=full" "$TmpPal
 umask 022
 
 # Use pallete to produce a gif from the video file
-ffmpeg -i "$TmpRecordPath" -i "$TmpPalettePath" -filter_complex "paletteuse=dither=sierra2_4a" "$OutputPath" -y -loop 0 -vf "fps=10,scale=640:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" || exit
+ffmpeg -i "$TmpRecordPath" -i "$TmpPalettePath" -filter_complex "paletteuse=dither=sierra2_4a" "$OutputPath" -y -loop 0 -vf "fps=20,scale=640:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" || exit
+
+cat "$OutputPath" | wl-copy
