@@ -9,6 +9,9 @@ o.relativenumber = true
 o.syntax = on
 o.filetype = on
 
+-- disable sidebar lsp info
+o.signcolumn = "no"
+
 -- use system clipboard
 o.clipboard = "unnamedplus"
 

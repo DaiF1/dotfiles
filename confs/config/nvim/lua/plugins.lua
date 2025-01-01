@@ -17,21 +17,32 @@ require("lazy").setup({
     'ribru17/bamboo.nvim',
     'nvim-lualine/lualine.nvim',
     {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        config = function()
-            require('coc-config')
-        end
+      'neovim/nvim-lspconfig',
+      dependencies = {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+      },
+      config = function()
+        require('lsp-config')
+      end,
     },
-    {'romgrk/barbar.nvim',
-        dependencies = {
-          'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-          'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-        },
-        init = function() vim.g.barbar_auto_setup = false end,
-        opts = { 
-            require('barbar-config')
-        }
+    'L3MON4D3/LuaSnip',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    {
+      'romgrk/barbar.nvim',
+       dependencies = {
+         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+         'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+       },
+       init = function() vim.g.barbar_auto_setup = false end,
+       opts = { 
+           require('barbar-config')
+       }
     },
     {
         'vim-scripts/DoxygenToolkit.vim'
