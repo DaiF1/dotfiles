@@ -1,16 +1,16 @@
 @define-color cc-bg rgba(34, 34, 34, 0.7);
-@define-color noti-border-color rgba(255, 200, 120, 0.15);
-@define-color noti-bg rgba(34, 34, 34, 0.8);
-@define-color noti-bg-opaque rgb(34, 34, 34);
+@define-color noti-border-color rgba(190, 204, 151, 0.15);
+@define-color noti-bg rgba(1, 64, 52, 0.8);
+@define-color noti-bg-opaque rgb(1, 64, 52);
 @define-color noti-bg-darker rgb(34, 34, 34);
-@define-color noti-bg-hover rgb(95, 135, 95);
-@define-color noti-bg-hover-opaque rgb(95, 135, 95);
-@define-color noti-bg-focus rgba(95, 135, 95, 0.6);
+@define-color noti-bg-hover rgb(25, 89, 55);
+@define-color noti-bg-hover-opaque rgb(25, 89, 55);
+@define-color noti-bg-focus rgba(190, 204, 151, 0.6);
 @define-color noti-close-bg rgba(251, 180, 53, 0.1);
 @define-color noti-close-bg-hover rgba(251, 180, 53, 0.15);
 @define-color text-color rgb(240, 226, 184);
 @define-color text-color-disabled rgb(251, 180, 53);
-@define-color bg-selected rgb(201, 165, 84);
+@define-color bg-selected rgb(190, 204, 151);
 .notification-row {
   outline: none;
 }
@@ -29,7 +29,7 @@
   color: @text-color;
   text-shadow: none;
   padding: 0;
-  border-radius: 100%;
+  /* border-radius: 12px; */
   margin-top: 5px;
   margin-right: 5px;
   box-shadow: none;
@@ -47,7 +47,7 @@
 
 .notification-row .notification-background .notification {
   /* The actual notification */
-  border-radius: 12px;
+  /* border-radius: 12px; */
   border: 1px solid @noti-border-color;
   padding: 0;
   transition: background 0.15s ease-in-out;
@@ -83,7 +83,7 @@
 
 .notification-row .notification-background .notification .notification-default-action {
   /* The large action that also displays the notification summary and body */
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .notification-row .notification-background .notification .notification-default-action:not(:only-child) {
@@ -94,7 +94,7 @@
 
 .notification-row .notification-background .notification .notification-default-action .notification-content {
   background: transparent;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   padding: 4px;
 }
 
@@ -150,7 +150,7 @@
   /* The "extra" optional bottom notification image */
   margin-top: 4px;
   background-color: white;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   -gtk-icon-effect: none;
 }
 
@@ -164,14 +164,14 @@
   color: @text-color;
   caret-color: @text-color;
   border: 1px solid @noti-border-color;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
   margin-left: 4px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   color: @text-color;
 }
 
@@ -317,7 +317,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .widget-title > button:hover {
@@ -333,7 +333,7 @@
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
@@ -345,7 +345,7 @@
 
 .widget-dnd > switch slider {
   background: @noti-bg-hover;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 /* Label widget */
@@ -369,7 +369,7 @@
   padding: 16px;
   margin: 16px 20px;
   background-color: @mpris-album-art-overlay;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
 }
 
@@ -379,7 +379,7 @@
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
 }
 
@@ -412,13 +412,13 @@
 .widget-buttons-grid {
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   background-color: @noti-bg;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background: @noti-bg;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
@@ -457,7 +457,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .widget-volume > box > button {
@@ -469,7 +469,7 @@
   background-color: @noti-bg-alt;
   padding: 4px 8px 8px 8px;
   margin: 0px 8px 8px 8px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 /* Backlight widget */
@@ -477,7 +477,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 /* Inhibitors widget */
@@ -493,7 +493,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .widget-inhibitors > button:hover {
